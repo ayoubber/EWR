@@ -158,16 +158,34 @@
         }
 
         /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(45, 125, 50, 0.8), rgba(76, 175, 80, 0.8)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f5e8" width="1200" height="600"/><g fill="%234caf50" opacity="0.1"><circle cx="200" cy="100" r="50"/><circle cx="800" cy="200" r="30"/><circle cx="1000" cy="400" r="40"/><rect x="100" y="300" width="80" height="60" rx="10"/><rect x="900" y="100" width="60" height="80" rx="10"/></g></svg>');
-            background-size: cover;
-            background-position: center;
+           .hero {
             color: white;
-            padding: 220px 0 120px;
+            padding: 220px 0 120px; /* يمكنك تعديل هذه الأرقام لتناسب الفيديو */
             text-align: center;
-            position: relative;
+            position: relative; /* مهم جداً لعمل الخلفية */
             overflow: hidden;
+            height: 100vh; /* يجعل القسم يملأ ارتفاع الشاشة */
+        }
+        /* New CSS for Video Background */
+        .hero-background-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* يضمن أن الفيديو يغطي المساحة كاملة بدون تشويه */
+            transform: translate(-50%, -50%);
+            z-index: -2; /* يضع الفيديو في الخلفية البعيدة */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(20, 50, 20, 0.5); /* طبقة خضراء داكنة شبه شفافة */
+            z-index: -1; /* يضع الطبقة فوق الفيديو وخلف النص */
         }
 
         .hero::before {
@@ -1058,12 +1076,8 @@
         
         <div class="main-header">
             <div class="container">
-                <a href="#home" class="logo" style="text-decoration: none; color: white;">
-                    <i class="fas fa-recycle"></i>
-                    <div>
-                        <div>E-Waste Recycling</div>
-                        <div style="font-size: 12px; font-weight: normal;">حلول بيئية مبتكرة</div>
-                    </div>
+                <a href="#home" class="logo">
+                    <img src="logo.png" alt="شعار شركة E-Waste Recycling" style="height: 50px; width: auto;">
                 </a>
                 
                 <nav>
@@ -1087,24 +1101,32 @@
     </header>
 
     <main>
-        <section class="hero" id="home">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>معا لتحويل النفايات الإلكترونية إلى فرص اقتصادية</h1>
-                    <p>شركة جزائرية رائدة في تدوير الأجهزة الإلكترونية، نحول النفايات إلى فرص اقتصادية ونحمي البيئة للأجيال القادمة</p>
-                    <div class="cta-buttons">
-                        <a href="#services" class="btn btn-primary">
-                            <i class="fas fa-leaf"></i>
-                            اكتشف خدماتنا
-                        </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <i class="fas fa-phone"></i>
-                            تواصل معنا
-                        </a>
-                    </div>
-                </div>
+                <section class="hero" id="home">
+    
+    <video autoplay loop muted playsinline class="hero-background-video">
+        <source src="video.mp4" type="video/mp4">
+        متصفحك لا يدعم عرض الفيديو.
+    </video>
+    
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+        <div class="hero-content">
+            <h1>نحو مستقبل أخضر</h1>
+            <p>شركة جزائرية رائدة في تدوير الأجهزة الإلكترونية، نحول النفايات إلى فرص اقتصادية ونحمي البيئة للأجيال القادمة</p>
+            <div class="cta-buttons">
+                <a href="#services" class="btn btn-primary">
+                    <i class="fas fa-leaf"></i>
+                    اكتشف خدماتنا
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i>
+                    تواصل معنا
+                </a>
             </div>
-        </section>
+        </div>
+    </div>
+                </section>
 
         <section class="stats" id="stats">
             <div class="container">
